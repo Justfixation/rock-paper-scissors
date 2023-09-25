@@ -1,19 +1,19 @@
-let computerSelection = Math.floor(Math.random() * 3) + 1;
 function getComputerChoice(){
-    switch(computerSelection) {
+    let computerChoice = Math.floor(Math.random() * 3) + 1;
+    switch(computerChoice) {
         case 1:
-            computerSelection = ("Rock");
-            console.log(`computerSelection = ${computerSelection}`);
+            console.log(`computerChoice = Rock`);
+            return "Rock";
             break;
         
         case 2:
-            computerSelection = ("Paper");
-            console.log(`computerSelection = ${computerSelection}`);
+            console.log(`computerChoice = Paper`);
+            return "Paper";
             break;
         
         case 3:
-            computerSelection = ("Scissors");
-            console.log(`computerSelection = ${computerSelection}`);
+            console.log(`computerChoice = Scissors`);
+            return "Scissors";
             break;
 
         default:
@@ -24,21 +24,21 @@ function getComputerChoice(){
 selectionMessage = 'Pick "Rock", "Paper", or "Scissors".'
 
 function getPlayerChoice(){
-    playerSelection = prompt(selectionMessage);
-    switch(playerSelection.toUpperCase()){
+    playerChoice = prompt(selectionMessage);
+    switch(playerChoice.toUpperCase()){
         case "ROCK":
-            playerSelection = "Rock";
-            console.log(`playerSelection = ${playerSelection}`);
+            console.log(`playerChoice = Rock`);
+            return "Rock";
             break;
 
         case "PAPER":
-            playerSelection = "Paper";
-            console.log(`playerSelection = ${playerSelection}`);
+            console.log(`playerChoice = Paper`);
+            return "Paper";
             break;
 
         case "SCISSORS":
-            playerSelection = "Scissors";
-            console.log(`playerSelection = ${playerSelection}`);
+            console.log(`playerChoice = Scissors`);
+            return "Scissors";
             break;
 
         default:
@@ -47,58 +47,56 @@ function getPlayerChoice(){
     }
     
 }
-/* Including computerSelection and playerSelection as parameters for playGame()
-wiped the variable values... Need to figure out how to use variables in a function*/
-function playGame(){
-    if(computerSelection == "Rock") {
-        if(playerSelection == "Rock") {
+/* Including getComputerChoice() and getPlayerChoice() as parameters for playGame()
+allows for both functions to be called only at the time of playGame(), instead of calling
+all three separately.*/
+function playGame(computerChoice, playerChoice){
+    if(computerChoice == "Rock") {
+        if(playerChoice == "Rock") {
             console.log("tie");
-            alert(`It's a tie! The computer picked ${computerSelection}.`);
-        } else if(playerSelection == "Paper") {
+            alert(`It's a tie! The computer picked ${computerChoice}.`);
+        } else if(playerChoice == "Paper") {
             console.log("win");
-            alert(`Congratulations, you won! The computer picked ${computerSelection}.`)
-        } else if(playerSelection == "Scissors") {
+            alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
+        } else if(playerChoice == "Scissors") {
             console.log("loss");
-            alert(`You lost, how unfortunate! The computer picked ${computerSelection}.`)
+            alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
         } else {
-            alert("Oops, something went wrong with playerSelection!");
+            alert("Oops, something went wrong with playerChoice!");
         }
 
-    } else if (computerSelection == "Paper") {
-        if(playerSelection == "Rock") {
+    } else if (computerChoice == "Paper") {
+        if(playerChoice == "Rock") {
             console.log("loss");
-            alert(`You lost, how unfortunate! The computer picked ${computerSelection}.`)
-        } else if(playerSelection == "Paper") {
+            alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
+        } else if(playerChoice == "Paper") {
             console.log("tie");
-            alert(`It's a tie! The computer picked ${computerSelection}.`);
-        } else if(playerSelection == "Scissors") {
+            alert(`It's a tie! The computer picked ${computerChoice}.`);
+        } else if(playerChoice == "Scissors") {
             console.log("win");
-            alert(`Congratulations, you won! The computer picked ${computerSelection}.`)
+            alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
         } else {
-            alert("Oops, something went wrong with playerSelection!");
+            alert("Oops, something went wrong with playerChoice!");
         }
 
-    } else if (computerSelection == "Scissors") {
-        if(playerSelection == "Rock") {
+    } else if (computerChoice == "Scissors") {
+        if(playerChoice == "Rock") {
             console.log("win");
-            alert(`Congratulations, you won! The computer picked ${computerSelection}.`)
-        } else if(playerSelection == "Paper") {
+            alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
+        } else if(playerChoice == "Paper") {
             console.log("loss");
-            alert(`You lost, how unfortunate! The computer picked ${computerSelection}.`)
-        } else if(playerSelection == "Scissors") {
+            alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
+        } else if(playerChoice == "Scissors") {
             console.log("tie");
-            alert(`It's a tie! The computer picked ${computerSelection}.`);
+            alert(`It's a tie! The computer picked ${computerChoice}.`);
         } else {
-            alert("Oops, something went wrong with playerSelection!");
+            alert("Oops, something went wrong with playerChoice!");
         }
 
     } else {
-        console.log("Oops, something went wrong with computerSelection!");
-        console.log(computerSelection);
+        console.log("Oops, something went wrong with computerChoice!");
+        console.log(computerChoice);
     }
 }
 
-
-getComputerChoice();
-getPlayerChoice();
-playGame();
+playGame(getComputerChoice(), getPlayerChoice());
