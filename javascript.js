@@ -53,13 +53,13 @@ all three separately.*/
 function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
-            console.log("tie");
+            console.log("result = tie");
             alert(`It's a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Paper") {
-            console.log("win");
+            console.log("result = win");
             alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
-            console.log("loss");
+            console.log("result = loss");
             alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -67,13 +67,13 @@ function playGame(computerChoice, playerChoice){
 
     } else if (computerChoice == "Paper") {
         if(playerChoice == "Rock") {
-            console.log("loss");
+            console.log("result = loss");
             alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
-            console.log("tie");
+            console.log("result = tie");
             alert(`It's a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Scissors") {
-            console.log("win");
+            console.log("result = win");
             alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -81,13 +81,13 @@ function playGame(computerChoice, playerChoice){
 
     } else if (computerChoice == "Scissors") {
         if(playerChoice == "Rock") {
-            console.log("win");
+            console.log("result = win");
             alert(`Congratulations, you won! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
-            console.log("loss");
+            console.log("result = loss");
             alert(`You lost, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
-            console.log("tie");
+            console.log("result = tie");
             alert(`It's a tie! The computer picked ${computerChoice}.`);
         } else {
             alert("Oops, something went wrong with playerChoice!");
