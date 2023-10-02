@@ -42,8 +42,7 @@ function getPlayerChoice(){
 
         default:
             selectionMessage = 'Sorry, you need to pick "Rock", "Paper", or "Scissors"!\nMake sure your spelling is correct.'
-            getPlayerChoice();
-            /* If this line is reached, an error will occur with playerChoice even after entering a valid choice*/
+            return getPlayerChoice();
     }
     
 }
