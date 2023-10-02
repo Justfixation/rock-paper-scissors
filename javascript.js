@@ -44,26 +44,26 @@ function getPlayerChoice(){
         default:
             selectionMessage = 'Sorry, you need to pick "Rock", "Paper", or "Scissors"!\nMake sure your spelling is correct.'
             getPlayerChoice();
+            /* If this line is reached, an error will occur with playerChoice even after entering a valid choice*/
     }
     
 }
 
 let roundCounter = 1;
-const totalResults = [];
 
 function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
              console.log(`Round ${roundCounter} result = tie`);
-             totalResults[roundCounter - 1] = "Tie";
+             finalResults += `\nRound ${roundCounter}: Tie`;
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = win`);
-            totalResults[roundCounter - 1] = "Win";
+            finalResults += `\nRound ${roundCounter}: Win`;
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
             console.log(`Round ${roundCounter} result = loss`);
-            totalResults[roundCounter - 1] = "Loss";
+            finalResults += `\nRound ${roundCounter}: Loss`;
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -72,15 +72,15 @@ function playGame(computerChoice, playerChoice){
     } else if (computerChoice == "Paper") {
         if(playerChoice == "Rock") {
             console.log(`Round ${roundCounter} result = loss`);
-            totalResults[roundCounter - 1] = "Loss";
+            finalResults += `\nRound ${roundCounter}: Loss`;
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${roundCounter} result = tie`);
-            totalResults[roundCounter - 1] = "Tie";
+            console.log(`Round ${roundCounter} result = Tie`);
+            finalResults += `\nRound ${roundCounter}: tie`;
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${roundCounter} result = win`);
-            totalResults[roundCounter - 1] = "Win";
+            console.log(`Round ${roundCounter} result = Win`);
+            finalResults += `\nRound ${roundCounter}: Win`;
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -89,15 +89,15 @@ function playGame(computerChoice, playerChoice){
     } else if (computerChoice == "Scissors") {
         if(playerChoice == "Rock") {
             console.log(`Round ${roundCounter} result = win`);
-            totalResults[roundCounter - 1] = "Win";
+            finalResults += `\nRound ${roundCounter}: Win`;
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = loss`);
-            totalResults[roundCounter - 1] = "Loss";
+            finalResults += `\nRound ${roundCounter}: Loss`;
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
             console.log(`Round ${roundCounter} result = tie`);
-            totalResults[roundCounter - 1] = "Tie";
+            finalResults += `\nRound ${roundCounter}: tie`;
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -108,19 +108,18 @@ function playGame(computerChoice, playerChoice){
         console.log(computerChoice);
         throw new Error("");
     }
+
     roundCounter += 1;
     if(roundCounter > 5) {
-        console.log(totalResults);
-        alert(`Your final Results:\n${totalResults}`);
+        console.log(`Final Results:\n${finalResults}`);
+        alert(`Your final Results:\n${finalResults}`);
     }
     /* roundCounter being 6 indicates that we've just finished the 5th round.*/
+    
     while (roundCounter <= 5) {
         playGame(getComputerChoice(), getPlayerChoice());
     }
 }
 
+let finalResults = "";
 playGame(getComputerChoice(), getPlayerChoice());
-/* Including getComputerChoice() and getPlayerChoice() as parameters for playGame()
-allows for both functions to be called only at the time of playGame(), instead of calling
-all three separately.*/
-
