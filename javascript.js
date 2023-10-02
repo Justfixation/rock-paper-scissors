@@ -21,8 +21,7 @@ function getComputerChoice(){
     }    
 }
 
-selectionMessage = 'Pick "Rock", "Paper", or "Scissors".'
-
+let selectionMessage = 'Pick "Rock", "Paper", or "Scissors".'
 function getPlayerChoice(){
     playerChoice = prompt(selectionMessage);
     switch(playerChoice.toUpperCase()){
@@ -50,7 +49,7 @@ function getPlayerChoice(){
 }
 
 let roundCounter = 1;
-
+let finalResults = "";
 function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
@@ -121,5 +120,11 @@ function playGame(computerChoice, playerChoice){
     }
 }
 
-let finalResults = "";
-playGame(getComputerChoice(), getPlayerChoice());
+ function resetGame(){
+    roundCounter = 1;
+    finalResults = "";
+    playGame(getComputerChoice(), getPlayerChoice());
+ }
+ /* Acts as a reset button, returns variables to their original value */
+
+resetGame();
