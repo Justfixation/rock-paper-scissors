@@ -49,11 +49,12 @@ function getPlayerChoice(){
 }
 
 let roundCounter = 1;
+const totalResults = [];
 
 function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${roundCounter} result = tie`);
+             console.log(`Round ${roundCounter} result = tie`);
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = win`);
@@ -99,17 +100,17 @@ function playGame(computerChoice, playerChoice){
         throw new Error("");
     }
     roundCounter += 1;
+    if(roundCounter > 5) {
+        console.log(totalResults);
+    }
+    /* roundCounter being 6 indicates that we've just finished the 5th round.*/
     while (roundCounter <= 5) {
         playGame(getComputerChoice(), getPlayerChoice());
     }
-    /* including a while loop within playGame() that calls playGame() is ingenious! as long as the
-    roundCounter increase happens before the next repeat playGame(), it limits the number of runs to
-    the designated amount! */
-
-    /* I need to store the previous game results and print them all together after each round. */
 }
 
 playGame(getComputerChoice(), getPlayerChoice());
 /* Including getComputerChoice() and getPlayerChoice() as parameters for playGame()
 allows for both functions to be called only at the time of playGame(), instead of calling
 all three separately.*/
+
