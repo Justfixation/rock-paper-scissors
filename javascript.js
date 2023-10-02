@@ -55,12 +55,15 @@ function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
              console.log(`Round ${roundCounter} result = tie`);
+             totalResults[roundCounter - 1] = "Tie";
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = win`);
+            totalResults[roundCounter - 1] = "Win";
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
             console.log(`Round ${roundCounter} result = loss`);
+            totalResults[roundCounter - 1] = "Loss";
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -69,12 +72,15 @@ function playGame(computerChoice, playerChoice){
     } else if (computerChoice == "Paper") {
         if(playerChoice == "Rock") {
             console.log(`Round ${roundCounter} result = loss`);
+            totalResults[roundCounter - 1] = "Loss";
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = tie`);
+            totalResults[roundCounter - 1] = "Tie";
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else if(playerChoice == "Scissors") {
             console.log(`Round ${roundCounter} result = win`);
+            totalResults[roundCounter - 1] = "Win";
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -83,12 +89,15 @@ function playGame(computerChoice, playerChoice){
     } else if (computerChoice == "Scissors") {
         if(playerChoice == "Rock") {
             console.log(`Round ${roundCounter} result = win`);
+            totalResults[roundCounter - 1] = "Win";
             alert(`Congratulations, you won round ${roundCounter}! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Paper") {
             console.log(`Round ${roundCounter} result = loss`);
+            totalResults[roundCounter - 1] = "Loss";
             alert(`You lost round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`)
         } else if(playerChoice == "Scissors") {
             console.log(`Round ${roundCounter} result = tie`);
+            totalResults[roundCounter - 1] = "Tie";
             alert(`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
         } else {
             alert("Oops, something went wrong with playerChoice!");
@@ -102,6 +111,7 @@ function playGame(computerChoice, playerChoice){
     roundCounter += 1;
     if(roundCounter > 5) {
         console.log(totalResults);
+        alert(`Your final Results:\n${totalResults}`);
     }
     /* roundCounter being 6 indicates that we've just finished the 5th round.*/
     while (roundCounter <= 5) {
