@@ -25,6 +25,7 @@ function getPlayerChoice(choice){
     playerChoice = choice;
     resetGame();
 }
+/*Starts match once player selects choice*/
 
 const finalResults = [];
 
@@ -101,6 +102,6 @@ function playGame(computerChoice, playerChoice){
  const paper = document.querySelector(".paper");
  const scissors = document.querySelector(".scissors");
 
-rock.addEventListener("click", () => console.log("rock button is working"));
-paper.addEventListener("click", () => console.log("paper button is working"));
-scissors.addEventListener("click", () => console.log("scissors button is working"));
+rock.addEventListener("click", () => getPlayerChoice("Rock"));
+paper.addEventListener("click", () => getPlayerChoice("Paper"));
+scissors.addEventListener("click", () => getPlayerChoice("Scissors"));
