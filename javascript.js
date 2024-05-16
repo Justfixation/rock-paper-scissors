@@ -1,3 +1,9 @@
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const roundResults = document.querySelector("#results");
+const tally = document.querySelector("#tally");
+
 function getComputerChoice(){
     let computerChoice = Math.floor(Math.random() * 3) + 1;
     switch(computerChoice) {
@@ -17,91 +23,139 @@ function getComputerChoice(){
             break;
 
         default:
-            console.log("Oops, something went wrong!");
+            alert("Oops, something went wrong with computerChoice!");
+            throw new Error("");
     }    
 }
 
-function getPlayerChoice(choice){
-    playerChoice = choice;
-    resetGame();
-}
-/*Starts match once player selects choice*/
-
-const finalResults = [];
+let roundCounter = 1;
+let computerScore = 0;
+let playerScore = 0;
+let ties = 0;
 
 function playGame(computerChoice, playerChoice){
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Tie`;
+            roundResults.textContent = (`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
+            ties += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundResults.textContent = (`Congratulations, you won Round ${roundCounter}! The computer picked ${computerChoice}.`);
+            playerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundResults.textContent = (`You lost Round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`);
+            computerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else if (computerChoice == "Paper") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundResults.textContent = (`You lost Round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`);
+            computerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = Tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: tie`;
+            roundResults.textContent = (`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
+            ties += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = Win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundResults.textContent = (`Congratulations, you won Round ${roundCounter}! The computer picked ${computerChoice}.`);
+            playerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else if (computerChoice == "Scissors") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundResults.textContent = (`Congratulations, you won Round ${roundCounter}! The computer picked ${computerChoice}.`);
+            playerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundResults.textContent = (`You lost Round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.`);
+            computerScore += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: tie`;
+            roundResults.textContent = (`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.`);
+            ties += 1;
+            tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`)
+            roundCounter += 1;
+            checkForWinner();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else {
-        console.log("Oops, something went wrong with computerChoice!");
+        alert("Oops, something went wrong with computerChoice!");
         console.log(computerChoice);
         throw new Error("");
     }    
 }
 
- function resetGame(){
-    while (finalResults.length > 0) {
-        finalResults.pop();
-    }
-    /* Removes each item of finalResults, emptying it for the next game */
-    
-    playGame(getComputerChoice(), playerChoice);
- }
- /* After resetting variables, runs game again. Acts as the initial start button too*/
- 
- const rock = document.querySelector(".rock");
- const paper = document.querySelector(".paper");
- const scissors = document.querySelector(".scissors");
+function checkForWinner() {
+    if(roundCounter > 5) {
+        let winner;
+        if (playerScore > computerScore) {
+            winner = "Player";
+        } else if (computerScore > playerScore) {
+            winner = "Computer";
+        } else if (playerScore == computerScore) {
+            winner = "Tie";
+        };
+        /* determines winner, only if roundCounter has reached 5*/
+        
+        switch(winner) {
+            case "Player":
+                alert("That's round 5! The overall winner is....\nYou! Congratulations!\n\nHit OK to reset the game.")
+                resetGame();
+                break;
+            
+            case "Computer":
+                alert("That's round 5! The overall winner is....\nThe computer! Unfortunate, but you'll get it next time!\n\nHit OK to reset the game.")
+                resetGame();
+                break;
 
-rock.addEventListener("click", () => getPlayerChoice("Rock"));
-paper.addEventListener("click", () => getPlayerChoice("Paper"));
-scissors.addEventListener("click", () => getPlayerChoice("Scissors"));
+            case "Tie":
+                alert("That's round 5! The overall winner is....\nA draw?!? What a match!\n\nHit OK to reset the game.")
+                resetGame();
+                break;
+
+            default:
+                alert("Oops, something went wrong with the final results!");
+                throw new Error("");
+        }
+    };
+}
+
+ function resetGame(){
+    roundCounter = 1;
+    playerScore = 0;
+    computerScore = 0;
+    ties = 0;
+    roundResults.textContent = ("5 rounds, winner takes all!");
+    tally.textContent = ("Running Tally:\nPlayer wins: 0 | Computer wins: 0 | Ties: 0");
+    /* Restores variables to the original values for a next game */  
+ }
+
+ rock.addEventListener("click", () => playGame(getComputerChoice(), "Rock"));
+ paper.addEventListener("click", () => playGame(getComputerChoice(), "Paper"));
+ scissors.addEventListener("click", () => playGame(getComputerChoice(), "Scissors"));
+ tally.textContent = ("Running Tally:\nPlayer wins: 0 | Computer wins: 0 | Ties: 0");
