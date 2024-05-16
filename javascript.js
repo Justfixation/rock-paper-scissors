@@ -21,30 +21,9 @@ function getComputerChoice(){
     }    
 }
 
-let selectionMessage = 'Pick "Rock", "Paper", or "Scissors".'
-function getPlayerChoice(){
-    playerChoice = prompt(selectionMessage);
-    switch(playerChoice.toUpperCase()){
-        case "ROCK":
-            console.log(`playerChoice = Rock`);
-            return "Rock";
-            break;
-
-        case "PAPER":
-            console.log(`playerChoice = Paper`);
-            return "Paper";
-            break;
-
-        case "SCISSORS":
-            console.log(`playerChoice = Scissors`);
-            return "Scissors";
-            break;
-
-        default:
-            selectionMessage = 'Sorry, you need to pick "Rock", "Paper", or "Scissors"!\nMake sure your spelling is correct.'
-            return getPlayerChoice();
-    }
-    
+function getPlayerChoice(choice){
+    playerChoice = choice;
+    resetGame();
 }
 
 const finalResults = [];
@@ -105,16 +84,7 @@ function playGame(computerChoice, playerChoice){
         console.log("Oops, something went wrong with computerChoice!");
         console.log(computerChoice);
         throw new Error("");
-    }
-
-    if(finalResults.length == 5) {
-        console.log(`Final Results:\n${finalResults.join("\n")}`);
-        alert(`Your final Results:\n${finalResults.join("\n")}`);
-    }
-    
-    while (finalResults.length < 5) {
-        playGame(getComputerChoice(), getPlayerChoice());
-    }
+    }    
 }
 
  function resetGame(){
@@ -122,9 +92,15 @@ function playGame(computerChoice, playerChoice){
         finalResults.pop();
     }
     /* Removes each item of finalResults, emptying it for the next game */
-    playGame(getComputerChoice(), getPlayerChoice());
+    
+    playGame(getComputerChoice(), playerChoice);
  }
  /* After resetting variables, runs game again. Acts as the initial start button too*/
  
-resetGame();
-resetGame();
+ const rock = document.querySelector(".rock");
+ const paper = document.querySelector(".paper");
+ const scissors = document.querySelector(".scissors");
+
+rock.addEventListener("click", () => console.log("rock button is working"));
+paper.addEventListener("click", () => console.log("paper button is working"));
+scissors.addEventListener("click", () => console.log("scissors button is working"));

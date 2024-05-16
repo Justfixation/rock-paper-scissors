@@ -1,0 +1,4 @@
+- Add rock paper scissor buttons.
+- Create function assigning playerChoice using a placeholder as the assignment value (each button will input their value where the placeholder goes).
+- Attach event listeners to each button, executing the function and assigning their value as playerChoice.
+Make sure getPlayerChoice also executes resetGame().
