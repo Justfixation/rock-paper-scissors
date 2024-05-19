@@ -5,3 +5,5 @@ Make sure buttons also execute playGame().
 - Add "end game" button to clear final results
 - Add text box to display the win/loss message above the playerChoice buttons.
 - Change final results to a running count (#tally) of Computer wins/Player wins/Ties, add a text box below buttons to display at all times.
+
+- Add event listener to finishGame, remove eventListeners from buttons during conclusion.
