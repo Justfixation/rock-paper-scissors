@@ -1,0 +1,127 @@
+[33mcommit 9907e677b8b04b74c2d63f319d2bb02b648c9c66[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrps-ui[m[33m)[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Wed May 15 23:35:02 2024 -0600
+
+    Display live results
+    
+    - Tweak logic to fit new UI display
+    - Re-add 5 round limit
+    - Auto reset game after round 5
+
+[33mcommit d7c232e790093e54e42c059c643c4e0a118df048[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Wed May 15 19:05:16 2024 -0600
+
+    Link buttons to player choice
+
+[33mcommit 3689e32b8a70a5afab5201813f869348f9aaa2f4[m[33m ([m[1;31morigin/rps-ui[m[33m)[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Wed May 15 18:53:59 2024 -0600
+
+    Add rock/paper/scissors buttons
+    
+    Remove 5-round code, attach event listeners to
+    each button.
+
+[33mcommit 8f9dc8ecdc3ec48c2fcd9531026c535a88973233[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Wed Oct 18 22:53:02 2023 -0600
+
+    Change finalResults to an Array
+    
+    Removed roundCounter, now counting rounds via finalResults length.
+    Added a loop to wipe finalResults in resetGame().
+
+[33mcommit dc35c933ac0fe789f15b108916e63e4a0d1d40c3[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Oct 1 23:28:46 2023 -0600
+
+    Fix getPlayerChoice() not returning value if typo
+
+[33mcommit ed0eaf82d6ecf86020534995cbc68c4048b24418[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Oct 1 23:13:35 2023 -0600
+
+    Enclose playGame() within resetGame()
+    
+    Resets variable values for replayability.
+
+[33mcommit d60a648d1ee109daa16bd4b320147d0627930405[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Oct 1 22:42:47 2023 -0600
+
+    Change finalResults to a string
+    
+    String format allows for printed results without unwanted commas.
+    Updated name from totalResults to finalResults.
+
+[33mcommit 7b7762637786f66ae956f80c1c0d21ba13f26b31[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Oct 1 20:41:47 2023 -0600
+
+    Add output for totalResults
+    
+    Gives a summary of wins/ties/losses after round 5.
+
+[33mcommit e8d330c723571ee82f4d77fbc1a5c836c7f66870[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Oct 1 20:30:04 2023 -0600
+
+    Add totalResults Array
+    
+    Keeps track of the wins/losses so far.
+
+[33mcommit 4d402a6eeb01173d600da99f9eb2e40bf5f2b52b[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Sep 24 22:44:16 2023 -0600
+
+    Replace fiveGameLoop() with an internal while loop
+    
+    Added intentional errors to stop code when triggering "Oops, something
+    went wrong!" lines.
+
+[33mcommit d88b5f46060c35d8a9cb7809e12f174a4085ee86[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Sep 24 22:20:21 2023 -0600
+
+    playGame() is now restricted to a 5-game loop
+    
+    Added fiveGameLoop() function to control number of games.
+
+[33mcommit c74600bd44565417c1a941c9a92c264388672dbb[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Sep 24 21:15:08 2023 -0600
+
+    Update result message in console
+
+[33mcommit 4bcfb12e9766ed634dfc505cab46a652da251ee7[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Sun Sep 24 21:10:47 2023 -0600
+
+    playGame() now calls both getChoice functions
+    
+    Changed playerSelection and computerSelection variables to playerChoice
+    and computerChoice for better comprehension.
+
+[33mcommit 247b47b58c1f646bf2057246f5c526d3e959a5a5[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Fri Sep 22 07:06:15 2023 -0600
+
+    Completed playGame() script.
+    
+    computerSelection and playerSelection variables now retain values
+    once playGame() begins.
+
+[33mcommit 397a109ad2cb13fe63fb139e8724d3ede360c84b[m
+Author: Kian <Kian.berg333@gmail.com>
+Date:   Wed Sep 20 21:41:27 2023 -0600
+
+    Added functions for computerChoice/playerChoice.
+    
+    Filters out bad user input instead of just asking for input.
+
+[33mcommit b362b493be3201e30e4cd0f5f4eb649c30d926a7[m
+Author: Justfixation <96162051+Justfixation@users.noreply.github.com>
+Date:   Wed Sep 20 20:10:59 2023 -0600
+
+    Initial commit

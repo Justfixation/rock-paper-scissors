@@ -1,130 +1,193 @@
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const roundResults = document.querySelector("#roundResults");
+const tally = document.querySelector("#scoreTally");
+const finalScore = document.querySelector("#finalScore");
+const resetBtn = document.querySelector(".resetBtn");
+let computerChoice;
+let playerChoice;
+
+resetBtn.addEventListener("click", () => resetGame());
+
 function getComputerChoice(){
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
+    computerChoice = Math.floor(Math.random() * 3) + 1;
     switch(computerChoice) {
         case 1:
             console.log(`computerChoice = Rock`);
+            computerChoice = "Rock";
             return "Rock";
             break;
         
         case 2:
             console.log(`computerChoice = Paper`);
+            computerChoice = "Paper";
             return "Paper";
             break;
         
         case 3:
             console.log(`computerChoice = Scissors`);
+            computerChoice = "Scissors";
             return "Scissors";
             break;
 
         default:
-            console.log("Oops, something went wrong!");
+            alert("Oops, something went wrong with computerChoice!");
+            throw new Error("");
     }    
 }
 
-let selectionMessage = 'Pick "Rock", "Paper", or "Scissors".'
-function getPlayerChoice(){
-    playerChoice = prompt(selectionMessage);
-    switch(playerChoice.toUpperCase()){
-        case "ROCK":
-            console.log(`playerChoice = Rock`);
-            return "Rock";
-            break;
-
-        case "PAPER":
-            console.log(`playerChoice = Paper`);
-            return "Paper";
-            break;
-
-        case "SCISSORS":
-            console.log(`playerChoice = Scissors`);
-            return "Scissors";
-            break;
-
-        default:
-            selectionMessage = 'Sorry, you need to pick "Rock", "Paper", or "Scissors"!\nMake sure your spelling is correct.'
-            return getPlayerChoice();
-    }
-    
+function playerChoiceRock() {
+    playerChoice = "Rock";
 }
 
-const finalResults = [];
+function playerChoicePaper() {
+    playerChoice = "Paper";
+}
 
-function playGame(computerChoice, playerChoice){
+function playerChoiceScissors() {
+    playerChoice = "Scissors";
+}
+
+let roundCounter = 1;
+let computerScore = 0;
+let playerScore = 0;
+let ties = 0;
+
+function updateTally() {
+    tally.textContent = (`Running tally:\nPlayer wins: ${playerScore} | Computer wins: ${computerScore} | Ties: ${ties}`);
+}
+/*Changes the UI message so the player can see who won that round*/
+
+function roundWin() {
+    roundResults.textContent = (`Congratulations, you won Round ${roundCounter}! The computer picked ${computerChoice}.\n\n`);
+    playerScore += 1;
+    updateTally();
+    roundCounter += 1;
+    checkForWinner();
+}
+
+function roundLoss() {
+    roundResults.textContent = (`You lost Round ${roundCounter}, how unfortunate! The computer picked ${computerChoice}.\n\n`);
+    computerScore += 1;
+    updateTally();
+    roundCounter += 1;
+    checkForWinner();
+}
+
+function roundTie() {
+    roundResults.textContent = (`Round ${roundCounter} is a tie! The computer picked ${computerChoice}.\n\n`);
+    ties += 1;
+    updateTally();
+    roundCounter += 1;
+    checkForWinner();
+}
+
+function playGame(){
+    computerChoice = getComputerChoice();
     if(computerChoice == "Rock") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Tie`;
+            roundTie();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundWin();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundLoss();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else if (computerChoice == "Paper") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundLoss();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = Tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: tie`;
+            roundTie();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = Win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundWin();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else if (computerChoice == "Scissors") {
         if(playerChoice == "Rock") {
-            console.log(`Round ${finalResults.length + 1} result = win`);
-            alert(`Congratulations, you won Round ${finalResults.length + 1}! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Win`;
+            roundWin();
         } else if(playerChoice == "Paper") {
-            console.log(`Round ${finalResults.length + 1} result = loss`);
-            alert(`You lost Round ${finalResults.length + 1}, how unfortunate! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: Loss`;
+            roundLoss();
         } else if(playerChoice == "Scissors") {
-            console.log(`Round ${finalResults.length + 1} result = tie`);
-            alert(`Round ${finalResults.length + 1} is a tie! The computer picked ${computerChoice}.`);
-            finalResults[finalResults.length] = `Round ${finalResults.length + 1}: tie`;
+            roundTie();
         } else {
             alert("Oops, something went wrong with playerChoice!");
             throw new Error("");
         }
     } else {
-        console.log("Oops, something went wrong with computerChoice!");
+        alert("Oops, something went wrong with computerChoice!");
         console.log(computerChoice);
         throw new Error("");
-    }
-
-    if(finalResults.length == 5) {
-        console.log(`Final Results:\n${finalResults.join("\n")}`);
-        alert(`Your final Results:\n${finalResults.join("\n")}`);
-    }
-    
-    while (finalResults.length < 5) {
-        playGame(getComputerChoice(), getPlayerChoice());
-    }
+    }    
 }
 
- function resetGame(){
-    while (finalResults.length > 0) {
-        finalResults.pop();
-    }
-    /* Removes each item of finalResults, emptying it for the next game */
-    playGame(getComputerChoice(), getPlayerChoice());
- }
- /* After resetting variables, runs game again. Acts as the initial start button too*/
- 
-resetGame();
+function checkForWinner() {
+    if(roundCounter > 5) {
+        let winner;
+        if (playerScore > computerScore) {
+            winner = "Player";
+        } else if (computerScore > playerScore) {
+            winner = "Computer";
+        } else if (playerScore == computerScore) {
+            winner = "Tie";
+        };
+        /* determines winner, only if roundCounter has reached 5*/
+        
+        switch(winner) {
+            case "Player":
+                finalScore.textContent = (`That's round 5! The overall winner is....\nYou! Congratulations!\n\nHit "Reset Game" to play again.`)
+                conclusion();
+                break;
+            
+            case "Computer":
+                finalScore.textContent = (`That's round 5! The overall winner is....\nThe computer! Unfortunate, but you'll get it next time!\n\nHit "Reset Game" to play again.`)
+                conclusion();
+                break;
+
+            case "Tie":
+                finalScore.textContent = (`That's round 5! The overall winner is....\nA draw?!? What a match!!\n\nHit "Reset Game" to play again.`)
+                conclusion();
+                break;
+
+            default:
+                alert("Oops, something went wrong with the final results!");
+                throw new Error("");
+        }
+    };
+}
+
+function conclusion() {
+    rock.removeEventListener("click", playGame);
+    paper.removeEventListener("click", playGame);
+    scissors.removeEventListener("click", playGame);
+    rock.style.backgroundColor = "#B3AAAA";
+    paper.style.backgroundColor = "#B3AAAA";
+    scissors.style.backgroundColor = "#B3AAAA";
+}
+/*Disables all buttons aside from resetBtn, since the game is over */ 
+
+function resetGame(){
+    roundCounter = 1;
+    playerScore = 0;
+    computerScore = 0;
+    ties = 0;
+    roundResults.textContent = ("5 rounds, winner takes all!");
+    finalScore.textContent = "";
+    updateTally();
+    rock.addEventListener("click", playGame);
+    paper.addEventListener("click", playGame);
+    scissors.addEventListener("click", playGame);
+    rock.style.backgroundColor = "revert";
+    paper.style.backgroundColor = "revert";
+    scissors.style.backgroundColor = "revert";
+   /* Restores variables and buttons to their original state for a new game **/  
+}
+
+rock.addEventListener("click", playerChoiceRock);
+paper.addEventListener("click", playerChoicePaper);
+scissors.addEventListener("click", playerChoiceScissors);
 resetGame();
