@@ -149,7 +149,7 @@ function checkForWinner() {
                 break;
 
             case "Tie":
-                finalScore.textContent = (`That's round 5! The overall winner is....\nA draw?!? What a match!\n\nHit "Reset Game" to play again.`)
+                finalScore.textContent = (`That's round 5! The overall winner is....\nA draw?!? What a match!!\n\nHit "Reset Game" to play again.`)
                 conclusion();
                 break;
 
