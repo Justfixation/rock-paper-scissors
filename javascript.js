@@ -126,7 +126,7 @@ function playGame(){
 }
 
 function checkForWinner() {
-    if(roundCounter > 5) {
+    if(playerScore >= 5 || computerScore >= 5) {
         let winner;
         if (playerScore > computerScore) {
             winner = "Player";
@@ -135,7 +135,7 @@ function checkForWinner() {
         } else if (playerScore == computerScore) {
             winner = "Tie";
         };
-        /* determines winner, only if roundCounter has reached 5*/
+        /* determines winner, only if someone has reached 5 wins*/
         
         switch(winner) {
             case "Player":
